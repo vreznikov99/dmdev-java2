@@ -13,6 +13,5 @@ public class ATMRunner {
         System.out.println("----");
         atm.withdraw(300);
         atm.info();
-
     }
 }
