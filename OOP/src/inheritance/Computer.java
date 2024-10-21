@@ -1,15 +1,10 @@
 package inheritance;
 
-public abstract class Computer {
+import interfaces.Printable;
+
+public abstract class Computer implements Printable {
     private int Ssd;
     private int Ram;
-
-    {
-        System.out.println("init computer");
-    }
-    static {
-        System.out.println("static init computer");
-    }
 
     public Computer(int ssd, int ram) {
         Ssd = ssd;
@@ -18,6 +13,10 @@ public abstract class Computer {
 
     public Computer() {
         System.out.println("Constructor Computer");
+    }
+    @Override
+    public void print(){
+        System.out.print("SSD: " + this.Ssd + " RAM: " + this.Ram);
     }
 
     public abstract void load();
