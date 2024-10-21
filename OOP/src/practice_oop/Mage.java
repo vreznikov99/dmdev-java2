@@ -1,6 +1,6 @@
 package practice_oop;
 
-public class Mage extends Hero{
+public class Mage extends Hero {
 
     public Mage(String name, int damage) {
         super(name, damage);
@@ -8,7 +8,7 @@ public class Mage extends Hero{
 
     @Override
     public void attackEnemy(Enemy enemy) {
+        System.out.println(getName() + " spoilt " + enemy.getName());
         enemy.takeDamage(getDamage());
-        System.out.println(getName() + " spoilt " + enemy.getName() + ". Health remains: " + enemy.getHealth());
     }
 }

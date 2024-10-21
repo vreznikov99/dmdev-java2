@@ -11,8 +11,13 @@ public class Enemy implements Mortal{
     }
 
     public void takeDamage(int damage){
-
-        health -= Math.min(health, damage);
+        if (isAlive() && health < damage){
+            health = 0;
+            System.out.println(getName() + " killed");
+        } else {
+            health -= Math.min(health, damage);
+            System.out.println(name + " got damage " + damage + ". Health remains: " + health);
+        }
     }
 
     @Override
