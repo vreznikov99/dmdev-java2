@@ -6,7 +6,7 @@ public class MainRunner {
 //        laptop.load();
 //        laptop.open();
 
-        new Laptop();
+         new Laptop();
 
     }
 }
