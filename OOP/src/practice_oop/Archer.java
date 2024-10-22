@@ -1,6 +1,8 @@
 package practice_oop;
 
-public class Archer extends Hero {
+import generics.weapon.RangeWeapon;
+
+public class Archer<T extends RangeWeapon> extends Hero<T> {
 
     private Wolf wolf;
     public Archer(String name, int damage) {
