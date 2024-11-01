@@ -23,10 +23,17 @@ public class Garage {
         int result = 0;
         for (Car car : garage.keySet()) {
             if (car.getBrand() == brand){
-                result += 1;
+                result += garage.get(car);
             }
         }
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Garage{" +
+                "garage=" + garage +
+                '}';
     }
 
     public Map<Car, Integer> getGarage() {

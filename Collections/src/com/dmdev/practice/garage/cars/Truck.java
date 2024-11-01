@@ -1,11 +1,15 @@
 package com.dmdev.practice.garage.cars;
 
+import com.dmdev.practice.garage.eums.Brand;
+import com.dmdev.practice.garage.eums.Color;
+import com.dmdev.practice.garage.eums.Model;
+
 import java.util.Objects;
 
 public class Truck extends Car{
     private int loadCapacity;
 
-    public Truck(String label, String model, int year, String colour, int loadCapacity) {
+    public Truck(Brand label, Model model, int year, Color colour, int loadCapacity) {
         super(label, model, year, colour);
         this.loadCapacity = loadCapacity;
     }

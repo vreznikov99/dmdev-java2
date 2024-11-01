@@ -1,11 +1,15 @@
 package com.dmdev.practice.garage.cars;
 
+import com.dmdev.practice.garage.eums.Brand;
+import com.dmdev.practice.garage.eums.Color;
+import com.dmdev.practice.garage.eums.Model;
+
 import java.util.Objects;
 
 public class RaceCar extends Car{
     private int maxSpeed;
 
-    public RaceCar(String label, String model, int year, String colour, int maxSpeed) {
+    public RaceCar(Brand label, Model model, int year, Color colour, int maxSpeed) {
         super(label, model, year, colour);
         this.maxSpeed = maxSpeed;
     }
