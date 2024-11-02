@@ -2,6 +2,7 @@ package com.dmdev.homework;
 
 import com.dmdev.homework.enums.Genre;
 
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,7 +20,7 @@ public class CinemaRunner {
         Movie movie9 = new Movie(9, 2015, 9, "Inside Out", Genre.COMEDY, 4.6);
         Movie movie10 = new Movie(10, 2018, 8, "Black Panther", Genre.ACTION, 4.3);
 
-        Set<Movie> movieList = new LinkedHashSet<>(List.of(
+        Set<Movie> movieList = new LinkedHashSet<>(Arrays.asList(
                 movie1,
                 movie2,
                 movie3,
