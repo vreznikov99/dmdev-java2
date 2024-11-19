@@ -1,11 +1,11 @@
 package com.dmdev.stream.homework;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.flatMapping;
-import static java.util.stream.Collectors.toMap;
 
 /**
  * Дан список студентов с полями:
@@ -47,6 +47,7 @@ public class Homework {
                 student5
         );
 
+        // Task #1
         Map<Integer, Double> courseAveragesScores = studentList.stream()
                 .filter(student -> student.getScoreList().size() > 3)
                 .collect(Collectors.groupingBy(Student::getCourseNumber,
@@ -58,9 +59,54 @@ public class Homework {
 
         System.out.println(courseAveragesScores);
 
-//                .average()
-//                .ifPresent(System.out::println);
-//                .collect(toMap(Student::getCourseNumber, ))
+        // Task #2
+        Map<Integer, List<String>> studentsByCourse = studentList.stream()
+                .collect(Collectors.groupingBy(Student::getCourseNumber,
+                        Collectors.mapping(Student::fullName, Collectors.toList())));
+
+        System.out.println(studentsByCourse);
+
+        // Task #3
+
+        Map<Integer, Map<List<String>, Double>> studentsByCourseWithScores = studentList.stream()
+                .map(student -> Map.entry(
+                        student.getCourseNumber(),
+                        Map.of(
+                                List.of(student.fullName()),
+                                student.getScoreList().stream()
+                                        .mapToInt(Integer::intValue)
+                                        .average()
+                                        .orElse(0.0)
+                        )
+                ))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (map1, map2) -> { // Слияние вложенных карт
+                            Map<List<String>, Double> merged = new HashMap<>(map1);
+                            merged.putAll(map2);
+                            return merged;
+                        }
+                ));
+
+        System.out.println(studentsByCourseWithScores);
+
+//        Map<Integer, Map<List<String>, Double>> studentsByCourseWithScores = studentList.stream()
+//                .collect(Collectors.groupingBy(Student::getCourseNumber,
+//                        Collectors.mapping(student -> Map.of(
+//                                List.of(student.fullName()),
+//                                student.getScoreList().stream()
+//                                        .mapToInt(Integer::intValue)
+//                                        .average()
+//                                        .orElse(0.0)
+//                        ,Collectors.reducing(
+//                                        new HashMap<List<String>, Double>(), // Начальное значение
+//                                        (map1, map2) -> { // Объединяем результаты
+//                                            map1.putAll(map2);
+//                                            return map1;
+//                                        }
+//                                )
+//                                ))));
 
 
     }
