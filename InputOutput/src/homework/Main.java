@@ -21,8 +21,5 @@ public class Main {
         Path pathResult = Path.of("src", "homework", "files", "result.csv");
         UtilClass.writeResultFile(pathResult, resultItemMap);
 
-
-
-
     }
 }
