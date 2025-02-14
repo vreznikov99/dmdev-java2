@@ -1,2 +1,7 @@
-package PACKAGE_NAME;public class SimpleRunnable {
+public class SimpleRunnable implements Runnable{
+
+    @Override
+    public void run() {
+        System.out.println("Runnable thread: " + Thread.currentThread().getName());
+    }
 }
