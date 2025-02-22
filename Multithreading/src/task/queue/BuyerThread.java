@@ -12,8 +12,8 @@ public class BuyerThread implements Runnable {
     @Override
     public void run() {
         try {
+            synchronized (cashBoxes) {
             while (true) {
-                synchronized (cashBoxes) {
                     if (!cashBoxes.isEmpty()) {
                         CashBox cashBox = cashBoxes.remove();
                         System.out.println(Thread.currentThread().getName() + " обслуживается в кассе " + cashBox);
